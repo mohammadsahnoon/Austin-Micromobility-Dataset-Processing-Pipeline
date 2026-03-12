@@ -1,0 +1,32 @@
+# Austin TX Micromobility Dataset Pipeline configuration
+
+stage1:
+  domain: data.austintexas.gov
+  dataset_id: 7d8e-dm7r
+  # Default mirrors original workflow. Lower this value for preview/sample runs.
+  limit: 15000000
+  batch_size: 50000
+  app_token: null
+  tract_reference_csv: data/reference/Austin_205_tracts_from_TIGER.csv
+  output_csv: data/interim/stage1_austin_trip_records_with_tract_centroids.csv
+
+stage2:
+  input_csv: data/interim/stage1_austin_trip_records_with_tract_centroids.csv
+  output_csv: data/processed/stage2_austin_trips_standardized.csv
+  chunksize: 500000
+
+stage3:
+  input_csv: data/processed/stage2_austin_trips_standardized.csv
+  tract_reference_csv: data/reference/Austin_205_tracts_from_TIGER.csv
+  output_csv: data/final/final_austin_escooter_2019_dataset.csv
+  chunksize: 500000
+
+stage4:
+  input_csv: data/final/final_austin_escooter_2019_dataset.csv
+  city_boundary_geojson: data/reference/BOUNDARIES_jurisdictions_20250809.geojson
+  pickup_output_dir: data/outputs/pickup_scooter_Austin_2019
+  dropoff_output_dir: data/outputs/dropoff_scooter_Austin_2019
+  cell_size_x_m: 240.0
+  cell_size_y_m: 220.0
+  crs_geographic: EPSG:4326
+  crs_projected: EPSG:32614
