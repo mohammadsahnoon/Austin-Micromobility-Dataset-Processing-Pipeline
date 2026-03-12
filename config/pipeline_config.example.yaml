@@ -30,3 +30,12 @@ stage4:
   cell_size_y_m: 220.0
   crs_geographic: EPSG:4326
   crs_projected: EPSG:32614
+
+stage5:
+  input_csv: data/final/final_austin_escooter_2019_dataset.csv
+  city_boundary_geojson: data/reference/BOUNDARIES_jurisdictions_20250809.geojson
+  output_png: data/outputs/global_mask_austin/Global_Mask_Austin_2019.png
+  cell_size_x_m: 240.0
+  cell_size_y_m: 220.0
+  crs_geographic: EPSG:4326
+  crs_projected: EPSG:32614

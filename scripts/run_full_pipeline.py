@@ -1,4 +1,4 @@
-"""Run all four stages using a YAML configuration file."""
+"""Run all five stages using a YAML configuration file."""
 
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ from austin_tx_pipeline.stage1_download_and_match import download_and_match_trac
 from austin_tx_pipeline.stage2_standardize_table import build_processed_trip_table
 from austin_tx_pipeline.stage3_build_final_dataset import build_final_2019_escooter_dataset
 from austin_tx_pipeline.stage4_generate_demand_images import generate_hourly_demand_images
+from austin_tx_pipeline.stage5_generate_global_mask import generate_global_binary_activity_mask
 
 
 def parse_args() -> argparse.Namespace:
@@ -38,6 +39,7 @@ def main() -> None:
     stage2_cfg = config["stage2"]
     stage3_cfg = config["stage3"]
     stage4_cfg = config["stage4"]
+    stage5_cfg = config.get("stage5", {})
 
     download_and_match_tract_centroids(
         output_csv=stage1_cfg["output_csv"],
@@ -71,6 +73,22 @@ def main() -> None:
         cell_size_y_m=float(stage4_cfg.get("cell_size_y_m", 220.0)),
         crs_geographic=stage4_cfg.get("crs_geographic", "EPSG:4326"),
         crs_projected=stage4_cfg.get("crs_projected", "EPSG:32614"),
+    )
+
+    generate_global_binary_activity_mask(
+        input_csv=stage5_cfg.get("input_csv", stage3_cfg["output_csv"]),
+        city_boundary_geojson=stage5_cfg.get(
+            "city_boundary_geojson",
+            stage4_cfg["city_boundary_geojson"],
+        ),
+        output_png=stage5_cfg.get(
+            "output_png",
+            "data/outputs/global_mask_austin/Global_Mask_Austin_2019.png",
+        ),
+        cell_size_x_m=float(stage5_cfg.get("cell_size_x_m", stage4_cfg.get("cell_size_x_m", 240.0))),
+        cell_size_y_m=float(stage5_cfg.get("cell_size_y_m", stage4_cfg.get("cell_size_y_m", 220.0))),
+        crs_geographic=stage5_cfg.get("crs_geographic", stage4_cfg.get("crs_geographic", "EPSG:4326")),
+        crs_projected=stage5_cfg.get("crs_projected", stage4_cfg.get("crs_projected", "EPSG:32614")),
     )
 
 

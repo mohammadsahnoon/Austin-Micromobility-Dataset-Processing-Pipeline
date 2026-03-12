@@ -7,6 +7,7 @@ The pipeline is limited to:
 - Census tract centroid mapping.
 - Cleaned 2019 e-scooter dataset generation.
 - Hourly pickup/dropoff demand image generation.
+- Global binary activity mask generation.
 
 It does **not** include lag analysis, ranking, model training, or statistical tests.
 
@@ -17,6 +18,7 @@ This code operationalizes the dataset-preparation workflow used before model dev
 2. Map trip start/end Census tract IDs to spatial coordinates.
 3. Produce a cleaned 2019 e-scooter trip table.
 4. Generate hourly grid-based pickup/dropoff demand images.
+5. Generate the global binary activity mask.
 
 ## Figures (Paper A)
 
@@ -38,7 +40,7 @@ Figure: Average hourly demand profile.
 ![Average demand by day of week](docs/figures/avg_demand_by_dow.png)
 Figure: Average demand by day-of-week.
 
-### Spatial Grid Visulaization over Autin, TX
+### Spatial Grid Visulaization over Austin, TX
 
 ![Spatial grid visualization](docs/figures/grid_over_tracts_with_inset.png)
 Figure: Spatial grid formation over Census Tracts.
@@ -115,6 +117,18 @@ Output folders:
 
 The PNG filename format is intentionally kept identical to the original workflow.
 
+### Stage 5: Generate Global Binary Activity Mask
+- Uses the final Stage 3 dataset (already filtered to Austin city trips).
+- Projects lon/lat to UTM 14N (`EPSG:32614`).
+- Uses the same city-derived raster grid definition as Stage 4:
+  - city boundary: `data/reference/BOUNDARIES_jurisdictions_20250809.geojson`
+  - cell size: `240m x 220m`
+- Marks a grid cell as active (`1`) if at least one pickup or dropoff falls in that cell.
+- Saves a 16-bit binary PNG with values `0` or `1`.
+
+Output:
+- `data/outputs/global_mask_austin/Global_Mask_Austin_2019.png`
+
 ## Repository Structure
 
 ```text
@@ -146,6 +160,7 @@ austin_tx_dataset_pipeline/
 |   |-- stage2_build_processed_trip_table.py
 |   |-- stage3_build_final_2019_escooter_dataset.py
 |   |-- stage4_generate_hourly_demand_images.py
+|   |-- stage5_generate_global_binary_mask.py
 |   |-- build_austin_205_tract_reference_from_tiger.py
 |   `-- run_full_pipeline.py
 |-- src/
@@ -156,6 +171,7 @@ austin_tx_dataset_pipeline/
 |       |-- stage2_standardize_table.py
 |       |-- stage3_build_final_dataset.py
 |       |-- stage4_generate_demand_images.py
+|       |-- stage5_generate_global_mask.py
 |       `-- tract_reference.py
 |-- .gitignore
 |-- LICENSE
@@ -183,6 +199,7 @@ python scripts/stage1_download_and_match_tract_centroids.py
 python scripts/stage2_build_processed_trip_table.py
 python scripts/stage3_build_final_2019_escooter_dataset.py
 python scripts/stage4_generate_hourly_demand_images.py
+python scripts/stage5_generate_global_binary_mask.py
 ```
 
 ### End-to-end (YAML config)
@@ -235,6 +252,7 @@ Official source links used for provenance:
 - Stage 2: Standardized compact trip table.
 - Stage 3: Final cleaned 2019 e-scooter dataset.
 - Stage 4: Hourly pickup/dropoff image tensors (PNG files).
+- Stage 5: Global binary activity mask (`Global_Mask_Austin_2019.png`).
 
 ## Reproducibility Notes
 
@@ -254,6 +272,7 @@ Official source links used for provenance:
 - Stage 1 and Stage 2 are large-scale I/O operations for 15M records.
 - Ensure sufficient disk space for intermediate CSV files and PNG outputs.
 - Stage 4 writes `365 x 24 = 8760` images per channel (pickup + dropoff).
+- Stage 5 writes one additional binary PNG mask on the same grid.
 
 ## Citation
 
