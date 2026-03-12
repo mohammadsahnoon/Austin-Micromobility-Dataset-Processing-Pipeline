@@ -1,4 +1,4 @@
-# Austin, TX Micromobility Dataset Pipeline (Paper A)
+﻿# Austin, TX Micromobility Dataset Pipeline (Paper A)
 
 This repository contains a clean, reproducible data-processing pipeline for the Austin, TX micromobility study used in Paper A (IEEE ITS journal workflow).
 
@@ -12,7 +12,7 @@ It does **not** include lag analysis, ranking, model training, or statistical te
 
 ## Relation to Paper A
 
-This code operationalizes the dataset-preparation pipeline used before model development:
+This code operationalizes the dataset-preparation workflow used before model development:
 1. ingest raw Austin trip records
 2. map trip start/end Census tract IDs to spatial coordinates
 3. produce a cleaned 2019 e-scooter trip table
@@ -73,36 +73,37 @@ The PNG filename format is intentionally kept identical to the original workflow
 
 ```text
 austin_tx_dataset_pipeline/
-├── config/
-│   └── pipeline_config.example.yaml
-├── data/
-│   ├── reference/
-│   │   ├── Austin_205_tracts_from_TIGER.csv
-│   │   └── BOUNDARIES_jurisdictions_20250809.geojson
-│   ├── raw/
-│   ├── interim/
-│   ├── processed/
-│   ├── final/
-│   └── outputs/
-├── scripts/
-│   ├── stage1_download_and_match_tract_centroids.py
-│   ├── stage2_build_processed_trip_table.py
-│   ├── stage3_build_final_2019_escooter_dataset.py
-│   ├── stage4_generate_hourly_demand_images.py
-│   └── run_full_pipeline.py
-├── src/
-│   └── austin_tx_pipeline/
-│       ├── config.py
-│       ├── logging_utils.py
-│       ├── stage1_download_and_match.py
-│       ├── stage2_standardize_table.py
-│       ├── stage3_build_final_dataset.py
-│       ├── stage4_generate_demand_images.py
-│       └── tract_reference.py
-├── .gitignore
-├── LICENSE
-├── requirements.txt
-└── README.md
+|-- config/
+|   `-- pipeline_config.example.yaml
+|-- data/
+|   |-- reference/
+|   |   |-- Austin_205_tracts_from_TIGER.csv
+|   |   `-- BOUNDARIES_jurisdictions_20250809.geojson
+|   |-- raw/
+|   |-- interim/
+|   |-- processed/
+|   |-- final/
+|   `-- outputs/
+|-- scripts/
+|   |-- stage1_download_and_match_tract_centroids.py
+|   |-- stage2_build_processed_trip_table.py
+|   |-- stage3_build_final_2019_escooter_dataset.py
+|   |-- stage4_generate_hourly_demand_images.py
+|   |-- build_austin_205_tract_reference_from_tiger.py
+|   `-- run_full_pipeline.py
+|-- src/
+|   `-- austin_tx_pipeline/
+|       |-- config.py
+|       |-- logging_utils.py
+|       |-- stage1_download_and_match.py
+|       |-- stage2_standardize_table.py
+|       |-- stage3_build_final_dataset.py
+|       |-- stage4_generate_demand_images.py
+|       `-- tract_reference.py
+|-- .gitignore
+|-- LICENSE
+|-- requirements.txt
+`-- README.md
 ```
 
 ## Installation
@@ -133,6 +134,20 @@ python scripts/stage4_generate_hourly_demand_images.py
 python scripts/run_full_pipeline.py --config config/pipeline_config.example.yaml
 ```
 
+## Optional Utility: Regenerate Austin_205_tracts_from_TIGER.csv
+
+Normal pipeline execution uses the committed tract reference file directly.
+
+Use this script only for provenance/revalidation:
+
+```bash
+python scripts/build_austin_205_tract_reference_from_tiger.py \
+  --trips-csv data/final/final_austin_escooter_2019_dataset.csv \
+  --city-boundary-geojson data/reference/BOUNDARIES_jurisdictions_20250809.geojson \
+  --tiger-zip path/to/tl_2010_48_tract10.zip \
+  --output-csv data/reference/Austin_205_tracts_from_TIGER.csv
+```
+
 ## Configuration Notes
 
 - Stage 1 uses `limit=15000000` by default.
@@ -145,6 +160,17 @@ python scripts/run_full_pipeline.py --config config/pipeline_config.example.yaml
 - Committed local reference files:
   - `data/reference/Austin_205_tracts_from_TIGER.csv`
   - `data/reference/BOUNDARIES_jurisdictions_20250809.geojson`
+
+## Reference Data Sources (Files Already Included)
+
+Both geospatial reference files already exist in this repository under `data/reference/`.
+
+Official source links used for provenance:
+- Austin jurisdictions boundary (`BOUNDARIES_jurisdictions`):
+  - https://data.austintexas.gov/City-Government/BOUNDARIES_jurisdictions/vnwj-xmz9/about_data
+- U.S. Census TIGER 2010 Census Tracts portal:
+  - https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2010&layergroup=Census+Tracts
+  - Texas file used: `tl_2010_48_tract10.zip`
 
 ## Outputs Summary
 
