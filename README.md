@@ -2,7 +2,7 @@
 
 This repository contains a clean, reproducible data-processing pipeline for the Austin, TX micromobility study used in the journal paper titled as:
 
-A Grid-Based Framework for E-Scooter Demand Representation and Temporal Input Design for Deep Learning: Evidence from Austin, Texas.
+"A Grid-Based Framework for E-Scooter Demand Representation and Temporal Input Design for Deep Learning: Evidence from Austin, Texas"
 
 The pipeline is limited to:
 - Raw trip record acquisition.
