@@ -1,6 +1,8 @@
-﻿# Austin, TX Micromobility Dataset Pipeline (Paper A)
+# Austin, TX Micromobility Dataset Pipeline
 
-This repository contains a clean, reproducible data-processing pipeline for the Austin, TX micromobility study used in Paper A (IEEE ITS journal workflow).
+This repository contains a clean, reproducible data-processing pipeline for the Austin, TX micromobility study used in the journal paper titled as:
+
+A Grid-Based Framework for E-Scooter Demand Representation and Temporal Input Design for Deep Learning: Evidence from Austin, Texas.
 
 The pipeline is limited to:
 - Raw trip record acquisition.
@@ -11,7 +13,7 @@ The pipeline is limited to:
 
 It does **not** include lag analysis, ranking, model training, or statistical tests.
 
-## Relation to Paper A
+## Relation to the Paper
 
 This code operationalizes the dataset-preparation workflow used before model development:
 1. Ingest raw Austin trip records.
@@ -20,9 +22,9 @@ This code operationalizes the dataset-preparation workflow used before model dev
 4. Generate hourly grid-based pickup/dropoff demand images.
 5. Generate the global binary activity mask.
 
-## Figures (Paper A)
+## Figures (From the Paper)
 
-The following figures are included to help users quickly understand the data context and the final image products produced by this pipeline.
+The following figures are included to help users quickly understand the data context and the final images produced by this pipeline.
 
 ### Raw Dataset Composition and Temporal Behavior
 
@@ -53,7 +55,7 @@ Figure: Demand Intensity of e-scooter trip origins (pickup).
 ![Trip destinations density map](docs/figures/trip_destinations_density_map.png)
 Figure: Demand Intensity of e-scooter trip destinations (dropoff).
 
-### Sample of the Generated Grid-based Hourly Demand Images (E-scooter 2019)
+### Samples of the Generated Grid-based Hourly Demand Images (E-scooter 2019)
 
 ![Pickup demand triptych](docs/figures/pickup_balanced_all_bins_triptych.png)
 Figure: Example pickup demand representation in pixel, projected, and geographic coordinates.
@@ -277,7 +279,7 @@ Official source links used for provenance:
 ## Citation
 
 If you use this pipeline, cite:
-- Paper A (IEEE ITS journal paper accompanying this repository).
+- A Grid-Based Framework for E-Scooter Demand Representation and Temporal Input Design for Deep Learning: Evidence from Austin, Texas.
 - Austin Open Data source for trip records.
 - U.S. Census TIGER/Line tract source used for tract reference preparation.
 
@@ -286,3 +288,4 @@ If you use this pipeline, cite:
 - This repository is for research reproducibility.
 - Data source schemas can evolve over time.
 - Results can vary if upstream raw records change after publication date.
+
