@@ -279,9 +279,18 @@ Official source links used for provenance:
 ## Citation
 
 If you use this pipeline, cite:
-- A Grid-Based Framework for E-Scooter Demand Representation and Temporal Input Design for Deep Learning: Evidence from Austin, Texas.
-- Austin Open Data source for trip records.
-- U.S. Census TIGER/Line tract source used for tract reference preparation.
+- Our paper: [1] Reference to be added..
+- Austin Open Data source for trip records [2] and jurisdiction boundary source [3]:
+
+  [2] City of Austin Open Data Portal, “Shared Micromobility Vehicle Trips (2018-2022).” Accessed: XXX. XX, XXXX. [Online]. Available: https://data.austintexas.gov/Transportation-and-Mobility/Shared-Micromobility-Vehicle-Trips-2018-2022-/7d8e-dm7r
+
+
+  [3] City of Austin Open Data Portal, “BOUNDARIES_jurisdictions.” Accessed: XXX. XX, XXXX. [Online]. Available: https://data.austintexas.gov/City-Government/BOUNDARIES_jurisdictions/vnwj-xmz9/about_data
+  
+  
+- U.S. Census TIGER/Line tract source used for tract reference preparation: 
+
+  [4] US Census Bureau, “2010 TIGER/Line Shapefiles: Census Tracts.” Accessed: XXX. XX, XXXX. [Online]. Available: https://www.census.gov/cgi-bin/geo/shapefiles/index.php?year=2010&layergroup=Census+Tracts
 
 ## Limitations / Disclaimer
 
