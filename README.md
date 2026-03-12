@@ -22,36 +22,47 @@ This code operationalizes the dataset-preparation workflow used before model dev
 
 The following figures are included to help users quickly understand the data context and the final image products produced by this pipeline.
 
-### Dataset Composition and Temporal Behavior
+### Raw Dataset Composition and Temporal Behavior
 
 ![Vehicle type counts](docs/figures/vehicle_type_counts.png)
-Figure: Vehicle type distribution in the Austin micromobility records.
-
-![Average demand by hour](docs/figures/avg_demand_by_hour.png)
-Figure: Mean hourly demand profile.
-
-![Average demand by day of week](docs/figures/avg_demand_by_dow.png)
-Figure: Mean demand by day-of-week.
+Figure: Vehicle type distribution in the Austin micromobility raw records.
 
 ![Daily and hourly coverage](docs/figures/daily_hourly_coverage_facets.png)
-Figure: Temporal coverage diagnostic across day/hour dimensions.
+Figure: Temporal coverage diagnostic of the raw dataset.
 
-### Spatial Demand and Grid Products
+### Processed Dataset Temporal Patterns (E-scooter 2019)
+
+![Average demand by hour](docs/figures/avg_demand_by_hour.png)
+Figure: Average hourly demand profile.
+
+![Average demand by day of week](docs/figures/avg_demand_by_dow.png)
+Figure: Average demand by day-of-week.
+
+### Spatial Grid Visulaization over Autin, TX
+
+![Spatial grid visualization](docs/figures/grid_over_tracts_with_inset.png)
+Figure: Spatial grid formation over Census Tracts.
+
+### Processed Dataset Spatial Demand Distribution (E-scooter 2019)
 
 ![Trip origins density map](docs/figures/trip_origins_density_map.png)
-Figure: Spatial density of trip origins.
+Figure: Demand Intensity of e-scooter trip origins (pickup).
 
 ![Trip destinations density map](docs/figures/trip_destinations_density_map.png)
-Figure: Spatial density of trip destinations.
+Figure: Demand Intensity of e-scooter trip destinations (dropoff).
 
-![Global mask triptych](docs/figures/global_mask_triptych.png)
-Figure: Final global analysis mask shown in geographic, projected, and pixel spaces.
+### Sample of the Generated Grid-based Hourly Demand Images (E-scooter 2019)
 
 ![Pickup demand triptych](docs/figures/pickup_balanced_all_bins_triptych.png)
-Figure: Example pickup-demand representation in geographic, projected, and pixel spaces.
+Figure: Example pickup demand representation in pixel, projected, and geographic coordinates.
 
 ![Dropoff demand triptych](docs/figures/dropoff_balanced_all_bins_triptych.png)
-Figure: Example dropoff-demand representation in geographic, projected, and pixel spaces.
+Figure: Example dropoff demand representation in pixel, projected, and geographic coordinates.
+
+### Global Binary Activity Mask (E-scooter 2019)
+
+![Global mask triptych](docs/figures/global_mask_triptych.png)
+Figure: Final global binary activity mask shown in pixel, projected, and geographic coordinates.
 
 ## Pipeline Stages
 
