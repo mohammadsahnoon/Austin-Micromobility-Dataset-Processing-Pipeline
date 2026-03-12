@@ -18,6 +18,41 @@ This code operationalizes the dataset-preparation workflow used before model dev
 3. Produce a cleaned 2019 e-scooter trip table.
 4. Generate hourly grid-based pickup/dropoff demand images.
 
+## Figures (Paper A)
+
+The following figures are included to help users quickly understand the data context and the final image products produced by this pipeline.
+
+### Dataset Composition and Temporal Behavior
+
+![Vehicle type counts](docs/figures/vehicle_type_counts.png)
+Figure: Vehicle type distribution in the Austin micromobility records.
+
+![Average demand by hour](docs/figures/avg_demand_by_hour.png)
+Figure: Mean hourly demand profile.
+
+![Average demand by day of week](docs/figures/avg_demand_by_dow.png)
+Figure: Mean demand by day-of-week.
+
+![Daily and hourly coverage](docs/figures/daily_hourly_coverage_facets.png)
+Figure: Temporal coverage diagnostic across day/hour dimensions.
+
+### Spatial Demand and Grid Products
+
+![Trip origins density map](docs/figures/trip_origins_density_map.png)
+Figure: Spatial density of trip origins.
+
+![Trip destinations density map](docs/figures/trip_destinations_density_map.png)
+Figure: Spatial density of trip destinations.
+
+![Global mask triptych](docs/figures/global_mask_triptych.png)
+Figure: Final global analysis mask shown in geographic, projected, and pixel spaces.
+
+![Pickup demand triptych](docs/figures/pickup_balanced_all_bins_triptych.png)
+Figure: Example pickup-demand representation in geographic, projected, and pixel spaces.
+
+![Dropoff demand triptych](docs/figures/dropoff_balanced_all_bins_triptych.png)
+Figure: Example dropoff-demand representation in geographic, projected, and pixel spaces.
+
 ## Pipeline Stages
 
 ### Stage 1: Download Raw Trips + Tract Centroid Mapping
@@ -75,6 +110,17 @@ The PNG filename format is intentionally kept identical to the original workflow
 austin_tx_dataset_pipeline/
 |-- config/
 |   `-- pipeline_config.example.yaml
+|-- docs/
+|   `-- figures/
+|       |-- vehicle_type_counts.png
+|       |-- avg_demand_by_hour.png
+|       |-- avg_demand_by_dow.png
+|       |-- daily_hourly_coverage_facets.png
+|       |-- trip_origins_density_map.png
+|       |-- trip_destinations_density_map.png
+|       |-- global_mask_triptych.png
+|       |-- pickup_balanced_all_bins_triptych.png
+|       `-- dropoff_balanced_all_bins_triptych.png
 |-- data/
 |   |-- reference/
 |   |   |-- Austin_205_tracts_from_TIGER.csv
