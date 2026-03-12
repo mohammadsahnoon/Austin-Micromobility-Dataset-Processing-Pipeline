@@ -3,20 +3,20 @@
 This repository contains a clean, reproducible data-processing pipeline for the Austin, TX micromobility study used in Paper A (IEEE ITS journal workflow).
 
 The pipeline is limited to:
-- raw trip record acquisition
-- Census tract centroid mapping
-- cleaned 2019 e-scooter dataset generation
-- hourly pickup/dropoff demand image generation
+- Raw trip record acquisition.
+- Census tract centroid mapping.
+- Cleaned 2019 e-scooter dataset generation.
+- Hourly pickup/dropoff demand image generation.
 
 It does **not** include lag analysis, ranking, model training, or statistical tests.
 
 ## Relation to Paper A
 
 This code operationalizes the dataset-preparation workflow used before model development:
-1. ingest raw Austin trip records
-2. map trip start/end Census tract IDs to spatial coordinates
-3. produce a cleaned 2019 e-scooter trip table
-4. generate hourly grid-based pickup/dropoff demand images
+1. Ingest raw Austin trip records.
+2. Map trip start/end Census tract IDs to spatial coordinates.
+3. Produce a cleaned 2019 e-scooter trip table.
+4. Generate hourly grid-based pickup/dropoff demand images.
 
 ## Pipeline Stages
 
@@ -48,7 +48,7 @@ Output:
   - `trip_length_km` in `[0.1, 35]`
   - `avg_speed_kmh` in `[2, 26]`
 - Drops rows with missing required fields.
-- Keeps rows whose start and end tracts are in the 205-tract reference.
+- Keeps rows whose start and end tracts are in the 205-tract reference (Within Austin, TX city limits).
 
 Output:
 - `data/final/final_austin_escooter_2019_dataset.csv`
@@ -138,7 +138,7 @@ python scripts/run_full_pipeline.py --config config/pipeline_config.example.yaml
 
 Normal pipeline execution uses the committed tract reference file directly.
 
-Use this script only for provenance/revalidation:
+Use this script only for revalidation:
 
 ```bash
 python scripts/build_austin_205_tract_reference_from_tiger.py \
@@ -174,10 +174,10 @@ Official source links used for provenance:
 
 ## Outputs Summary
 
-- Stage 1: enriched raw table with mapped tract centroids
-- Stage 2: standardized compact trip table
-- Stage 3: final cleaned 2019 e-scooter dataset
-- Stage 4: hourly pickup/dropoff image tensors (PNG files)
+- Stage 1: Raw table with mapped tract centroids.
+- Stage 2: Standardized compact trip table.
+- Stage 3: Final cleaned 2019 e-scooter dataset.
+- Stage 4: Hourly pickup/dropoff image tensors (PNG files).
 
 ## Reproducibility Notes
 
@@ -201,9 +201,9 @@ Official source links used for provenance:
 ## Citation
 
 If you use this pipeline, cite:
-- Paper A (IEEE ITS journal paper accompanying this repository)
-- Austin Open Data source for trip records
-- U.S. Census TIGER/Line tract source used for tract reference preparation
+- Paper A (IEEE ITS journal paper accompanying this repository).
+- Austin Open Data source for trip records.
+- U.S. Census TIGER/Line tract source used for tract reference preparation.
 
 ## Limitations / Disclaimer
 
