@@ -55,6 +55,9 @@ Figure: Demand Intensity of e-scooter trip origins (pickup).
 ![Trip destinations density map](docs/figures/trip_destinations_density_map.png)
 Figure: Demand Intensity of e-scooter trip destinations (dropoff).
 
+![Animated hourly spatial distribution of average trip origins and destinations by Census tract](docs/figures/spatial_demand_distribution_animation.gif)
+Figure: Hourly animation of the spatial distribution of average e-scooter trip origins and destinations per Census tract across Austin, TX.
+
 ### Samples of the Generated Grid-based Hourly Demand Images (E-scooter 2019)
 
 ![Pickup demand triptych](docs/figures/pickup_balanced_all_bins_triptych.png)
