@@ -28,11 +28,15 @@ The following figures are included to help users quickly understand the data con
 
 ### Raw Dataset Composition and Temporal Behavior
 
-![Vehicle type counts](docs/figures/vehicle_type_counts.png)
+<p align="center">
+  <img src="docs/figures/vehicle_type_counts.png" alt="Vehicle type counts" width="80%">
+</p>
 
 *Figure: Vehicle type distribution in the Austin micromobility raw records.*
 
-![Daily and hourly coverage](docs/figures/daily_hourly_coverage_facets.png)
+<p align="center">
+  <img src="docs/figures/daily_hourly_coverage_facets.png" alt="Daily and hourly coverage" width="80%">
+</p>
 
 *Figure: Temporal coverage diagnostic of the raw dataset.*
 
