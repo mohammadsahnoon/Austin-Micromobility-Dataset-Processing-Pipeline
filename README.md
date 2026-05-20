@@ -44,11 +44,15 @@ The following figures are included to help users quickly understand the data con
 
 ### Processed Dataset Temporal Patterns (E-scooter 2019)
 
-![Average demand by hour](docs/figures/avg_demand_by_hour.png)
+<p align="center">
+  <img src="docs/figures/avg_demand_by_hour.png" alt="Average demand by hour" width="80%">
+</p>
 
 *Figure: Average hourly demand profile.*
 
-![Average demand by day of week](docs/figures/avg_demand_by_dow.png)
+<p align="center">
+  <img src="docs/figures/avg_demand_by_dow.png" alt="Average demand by day of week" width="80%">
+</p>
 
 *Figure: Average demand by day-of-week.*
 
