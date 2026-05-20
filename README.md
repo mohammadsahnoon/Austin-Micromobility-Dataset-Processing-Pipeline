@@ -29,47 +29,68 @@ The following figures are included to help users quickly understand the data con
 ### Raw Dataset Composition and Temporal Behavior
 
 ![Vehicle type counts](docs/figures/vehicle_type_counts.png)
-Figure: Vehicle type distribution in the Austin micromobility raw records.
+
+*Figure: Vehicle type distribution in the Austin micromobility raw records.*
 
 ![Daily and hourly coverage](docs/figures/daily_hourly_coverage_facets.png)
-Figure: Temporal coverage diagnostic of the raw dataset.
+
+*Figure: Temporal coverage diagnostic of the raw dataset.*
+
+---
 
 ### Processed Dataset Temporal Patterns (E-scooter 2019)
 
 ![Average demand by hour](docs/figures/avg_demand_by_hour.png)
-Figure: Average hourly demand profile.
+
+*Figure: Average hourly demand profile.*
 
 ![Average demand by day of week](docs/figures/avg_demand_by_dow.png)
-Figure: Average demand by day-of-week.
 
-### Spatial Grid Visulaization over Austin, TX
+*Figure: Average demand by day-of-week.*
+
+---
+
+### Spatial Grid Visualization over Austin, TX
 
 ![Spatial grid visualization](docs/figures/grid_over_tracts_with_inset.png)
-Figure: Spatial grid formation over Census Tracts.
+
+*Figure: Spatial grid formation over Census Tracts.*
+
+---
 
 ### Processed Dataset Spatial Demand Distribution (E-scooter 2019)
 
 ![Trip origins density map](docs/figures/trip_origins_density_map.png)
-Figure: Demand Intensity of e-scooter trip origins (pickup).
+
+*Figure: Demand intensity of e-scooter trip origins (pickup).*
 
 ![Trip destinations density map](docs/figures/trip_destinations_density_map.png)
-Figure: Demand Intensity of e-scooter trip destinations (dropoff).
+
+*Figure: Demand intensity of e-scooter trip destinations (dropoff).*
 
 ![Animated hourly spatial distribution of average trip origins and destinations by Census tract](docs/figures/spatial_demand_distribution_animation.gif)
-Figure: Hourly animation of the spatial distribution of average e-scooter trip origins and destinations per Census tract across Austin, TX.
+
+*Figure: Hourly animation of the spatial distribution of average e-scooter trip origins and destinations per Census tract across Austin, TX.*
+
+---
 
 ### Samples of the Generated Grid-based Hourly Demand Images (E-scooter 2019)
 
 ![Pickup demand triptych](docs/figures/pickup_balanced_all_bins_triptych.png)
-Figure: Example pickup demand representation in pixel, projected, and geographic coordinates.
+
+*Figure: Example pickup demand representation in pixel, projected, and geographic coordinates.*
 
 ![Dropoff demand triptych](docs/figures/dropoff_balanced_all_bins_triptych.png)
-Figure: Example dropoff demand representation in pixel, projected, and geographic coordinates.
+
+*Figure: Example dropoff demand representation in pixel, projected, and geographic coordinates.*
+
+---
 
 ### Global Binary Activity Mask (E-scooter 2019)
 
 ![Global mask triptych](docs/figures/global_mask_triptych.png)
-Figure: Final global binary activity mask shown in pixel, projected, and geographic coordinates.
+
+*Figure: Final global binary activity mask shown in pixel, projected, and geographic coordinates.*
 
 ## Pipeline Stages
 
